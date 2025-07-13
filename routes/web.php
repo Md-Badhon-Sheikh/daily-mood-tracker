@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\backend\admin\DashboardController;
+use App\Http\Controllers\backend\admin\MoodTypeController;
 use App\Http\Controllers\backend\admin\ProfileController;
 use App\Http\Controllers\backend\AuthenticationController;
 use App\Http\Controllers\backend\operator\DashboardController as OperatorDashboardController;
@@ -30,6 +31,9 @@ Route::prefix('admin')->group(function () {
             Route::post('profile-password/update', [ProfileController::class, 'profile_password_update'])->name('profile.password.update');
             //dashboard
             Route::get('dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
+
+            Route::match(['get', 'post'], 'mood_type', [MoodTypeController::class, 'MoodType'])->name('mood_type');
+
         });
     });
 });

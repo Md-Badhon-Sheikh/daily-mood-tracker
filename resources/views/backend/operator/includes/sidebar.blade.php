@@ -20,6 +20,14 @@
                     <span class="link-title">Dashboard</span>
                 </a>
             </li>
+
+             <li
+                class="nav-item">
+                <a class="nav-link"  href="{{route('operator.mood_entries')}}" role="button">
+                    <i class="fa-regular fa-user"></i>
+                    <span class="link-title">Mood Entries</span>
+                </a>
+            </li>
         </ul>
     </div>
 </nav>

@@ -5,6 +5,7 @@ use App\Http\Controllers\backend\admin\MoodTypeController;
 use App\Http\Controllers\backend\admin\ProfileController;
 use App\Http\Controllers\backend\AuthenticationController;
 use App\Http\Controllers\backend\operator\DashboardController as OperatorDashboardController;
+use App\Http\Controllers\backend\operator\MoodEntriesController;
 use App\Http\Controllers\backend\operator\ProfileController as OperatorProfileController;
 use App\Http\Controllers\FrontEndController;
 use App\Http\Middleware\AdminAuthenticationMiddleware;
@@ -34,6 +35,7 @@ Route::prefix('admin')->group(function () {
 
             Route::match(['get', 'post'], 'mood_type', [MoodTypeController::class, 'MoodType'])->name('mood_type');
 
+            Route::get('mood_type/delete/{id}', [MoodTypeController::class, 'mood_type_delete'])->name('.delete');
         });
     });
 });
@@ -51,6 +53,9 @@ Route::prefix('operator')->group(function () {
             Route::post('profile-password/update', [OperatorProfileController::class, 'profile_password_update'])->name('profile.password.update');
             //dashboard 
             Route::get('dashboard', [OperatorDashboardController::class, 'dashboard'])->name('dashboard');
+
+            Route::match(['get', 'post'], 'mood_entries', [MoodEntriesController::class, 'MoodEntries'])->name('mood_entries');
+
         });
     });
 });

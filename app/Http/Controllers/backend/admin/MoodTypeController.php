@@ -52,4 +52,14 @@ class MoodTypeController extends Controller implements HasMiddleware
         $data['page_title'] = 'Mood Type';
         return view('backend.admin.pages.mood_type', compact('data'));
     }
+
+    public function mood_type_delete($id){
+        $server_response = ['status' => 'FAILED', 'message' => 'Not Found'];
+        $mood_type = MoodType::findOrFail($id);
+        if($mood_type){
+            $mood_type->delete();
+            $server_response = ['status' => 'SUCCESS', 'message' => 'Deleted Successfully'];
+        }
+        echo json_encode($server_response);
+    }
 }
